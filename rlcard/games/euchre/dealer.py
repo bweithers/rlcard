@@ -16,3 +16,5 @@ class EuchreDealer:
             card = self.deck.pop()
             player.hand.append(card)
 
+    def flip_card(self):
+        return self.deck.pop()
