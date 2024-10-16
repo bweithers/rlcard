@@ -4,7 +4,7 @@ import numpy as np
 from rlcard.games.euchre import Dealer
 from rlcard.games.euchre import Player
 from rlcard.games.euchre import Judger
-
+from rlcard.games.euchre import Trick
 class EuchreGame:
 
     def __init__(self, allow_step_back=False) -> None:
@@ -24,7 +24,7 @@ class EuchreGame:
         self.dealer = Dealer(self.np_random)
         self.judger = Judger(self.np_random)
         self.players = []
-        self.current_trick = []
+        self.current_trick = Trick()
         for i in range(self.num_players):
             self.players.append(Player(i, self.np_random))
         
@@ -46,20 +46,21 @@ class EuchreGame:
 
         return state, self.game_pointer
         
-    def step(self, action) -> tuple[dict, int]:
+    def step(self, action: int) -> tuple[dict, int]:
 
         # Action # will match the index of the card in the player's hand
         # TODO step back
-
         next_state = {}
 
         player = self.players[self.game_pointer]
         card = player.play_card(action)
+        self.current_trick.add_card(player, card, self.trump)
 
 
-    def get_state(self, player) -> dict:
+    def get_state(self, player_id: int) -> dict:
+        player = self.players[player_id]
         tricks = [self.tricks[player.team], self.tricks[(player.team+1)%2]]
-        state = self.players[player].get_state(tricks, self.turn_up, self.current_trick)
+        state = player.get_state(tricks, self.turn_up, self.current_trick)
         state['current_player'] = self.game_pointer
         return state
 
