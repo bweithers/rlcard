@@ -1,5 +1,4 @@
 from rlcard.games.base import Card
-
 class EuchreCard(Card):
     #TODO implement lookup index based on trump suit, fake 'suit' for left bower
     def __init__(self, suit, rank):
