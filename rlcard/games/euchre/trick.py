@@ -1,5 +1,5 @@
-from euchre_card import EuchreCard as Card
-from player import EuchrePlayer as Player
+from .euchrecard import EuchreCard as Card
+from .player import EuchrePlayer as Player
 class EuchreTrick:
 
     def __init__(self):

@@ -1,5 +1,3 @@
-from euchre_card import EuchreCard as Card
-from trick import EuchreTrick as Trick
 
 class EuchrePlayer:
 
@@ -23,12 +21,12 @@ class EuchrePlayer:
     def show_hand(self) -> list[str]:    
         return [str(card) for card in self.hand]
     
-    def play_card(self, card_idx) -> Card:
+    def play_card(self, card_idx):
         card = self.hand[card_idx]
         self.hand.remove(card)
         return card
 
-    def get_legal_actions(self, current_trick: Trick) -> list[int]:
+    def get_legal_actions(self, current_trick) -> list[int]:
         # TODO are actions index of card in hand or index of card from state?
         legal_actions = []
         # if we can follow suit, we must
@@ -39,7 +37,7 @@ class EuchrePlayer:
             legal_actions = [i for i in range(len(self.hand))]
         return legal_actions
     
-    def get_state(self, tricks: int, turn_up: Card, current_trick: Trick) -> dict:
+    def get_state(self, tricks: int, turn_up, current_trick) -> dict:
         # TODO implement state
         state = {}
         state['hand'] = [card.get_index() for card in self.hand]

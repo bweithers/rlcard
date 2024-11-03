@@ -1,6 +1,6 @@
-from euchre_card import EuchreCard as Card
-from trick import EuchreTrick as Trick
-from player import EuchrePlayer as Player
+from rlcard.games.euchre.euchrecard import EuchreCard as Card
+from rlcard.games.euchre.trick import EuchreTrick as Trick
+from rlcard.games.euchre.player import EuchrePlayer as Player
 
 class EuchreJudger:
     def __init__(self, np_random):

@@ -1,10 +1,11 @@
 from copy import deepcopy
 import numpy as np
 
-from rlcard.games.euchre import Dealer
-from rlcard.games.euchre import Player
-from rlcard.games.euchre import Judger
-from rlcard.games.euchre import Trick
+from .dealer import EuchreDealer as Dealer
+from .player import EuchrePlayer as Player
+from .judger import EuchreJudger as Judger
+from .trick import EuchreTrick as Trick
+
 class EuchreGame:
 
     def __init__(self, allow_step_back=False) -> None:
