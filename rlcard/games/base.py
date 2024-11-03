@@ -50,3 +50,12 @@ class Card:
             string: the combination of suit and rank of a card. Eg: 1S, 2H, AD, BJ, RJ...
         '''
         return self.suit+self.rank
+
+    def get_suit(self):
+        '''
+        Get the Suit of a card.
+        
+        Returns:
+            string: C, D, H, or S
+        '''
+        return self.suit
