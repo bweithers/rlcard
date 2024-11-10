@@ -1,5 +1,4 @@
 from .euchrecard import EuchreCard as Card
-from .player import EuchrePlayer as Player
 class EuchreTrick:
 
     def __init__(self):
@@ -8,7 +7,7 @@ class EuchreTrick:
         self.led_suit = None
         self.winner = None
 
-    def add_card(self, player: Player, card: Card, trump_suit: str):
+    def add_card(self, player, card: Card, trump_suit: str):
         '''
             Add a card to the trick. Corresponding list tracks whose card is whose.
             Set the led suit if it is the first card added.
